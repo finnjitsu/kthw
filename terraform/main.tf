@@ -7,12 +7,10 @@ terraform {
 }
 
 module "aws-vpc" {
-  source = "github.com/finnjitsu/aws-vpc"
-  region   = var.region
-  cidr     = var.vpc_cidr
-  vpc_name = var.key
-  app_subnet_a_name = var.app_subnet_a_name
+  source            = "github.com/finnjitsu/aws-vpc"
+  region            = var.region
+  stack_name        = var.key
+  vpc_cidr          = var.vpc_cidr
   app_subnet_a_cidr = var.app_subnet_a_cidr
-  app_subnet_b_name = var.app_subnet_b_name
   app_subnet_b_cidr = var.app_subnet_b_cidr
 }
