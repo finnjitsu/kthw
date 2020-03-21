@@ -19,14 +19,28 @@ module "main_vpc" {
   web_subnet_b_cidr = var.web_subnet_b_cidr
 }
 
-
-module "jenkins" {
+/*module "jenkins" {
   source            = "github.com/finnjitsu/jenkins"
   region            = var.region
   stack_name        = var.key
   ec2_instance_type = "t3.micro"
   root_disk_sz      = "20"
   app_disk_sz       = "20"
+  vpc_id            = module.main_vpc.vpc_id
+  app_subnet_a_id   = module.main_vpc.app_subnet_a_id
+  app_subnet_b_id   = module.main_vpc.app_subnet_b_id
+  web_subnet_a_id   = module.main_vpc.web_subnet_a_id
+  web_subnet_b_id   = module.main_vpc.web_subnet_b_id
+}*/
+
+module "k8s" {
+  source            = "github.com/finnjitsu/k8s"
+  region            = var.region
+  stack_name        = var.key
+  ec2_instance_type = "t3.micro"
+  root_disk_sz      = "20"
+  app_disk_sz       = "20"
+  vpc_id            = module.main_vpc.vpc_id
   app_subnet_a_id   = module.main_vpc.app_subnet_a_id
   app_subnet_b_id   = module.main_vpc.app_subnet_b_id
   web_subnet_a_id   = module.main_vpc.web_subnet_a_id
