@@ -57,3 +57,8 @@ variable "web_subnet_b_cidr" {
   type        = string
   description = "CIDR block for the second web tier subnet."
 }
+
+variable "account_alias" {
+  type        = string
+  description = "Friendly name for the AWS account, used in s3 bucket names."
+}

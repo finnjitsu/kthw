@@ -34,15 +34,14 @@ module "main_vpc" {
 }*/
 
 module "k8s" {
-  source            = "github.com/finnjitsu/k8s"
-  region            = var.region
-  stack_name        = var.key
-  ec2_instance_type = "t3.micro"
-  root_disk_sz      = "20"
-  app_disk_sz       = "20"
-  vpc_id            = module.main_vpc.vpc_id
-  app_subnet_a_id   = module.main_vpc.app_subnet_a_id
-  app_subnet_b_id   = module.main_vpc.app_subnet_b_id
-  web_subnet_a_id   = module.main_vpc.web_subnet_a_id
-  web_subnet_b_id   = module.main_vpc.web_subnet_b_id
+  source               = "github.com/finnjitsu/k8s"
+  region               = var.region
+  account_alias        = var.account_alias
+  stack_name           = var.key
+  worker_instance_type = "t3.micro"
+  vpc_id               = module.main_vpc.vpc_id
+  app_subnet_a_id      = module.main_vpc.app_subnet_a_id
+  app_subnet_b_id      = module.main_vpc.app_subnet_b_id
+  web_subnet_a_id      = module.main_vpc.web_subnet_a_id
+  web_subnet_b_id      = module.main_vpc.web_subnet_b_id
 }
